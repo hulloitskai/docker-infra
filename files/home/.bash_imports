@@ -1,0 +1,12 @@
+#!/bin/bash
+
+## Import .bash_functions.
+if [ -f $HOME/.bash_functions ]; then . $HOME/.bash_functions
+else printf "\e[0;31mWARN: .bash_functions.d/ NOT FOUND\033[0m\n"
+fi
+
+## Import .bash_aliases.
+## This requires $HOME/.bash_functions to have been sourced.
+if [ -f $HOME/.bash_aliases ]; then . $HOME/.bash_aliases
+else warn "WARN: .bash_aliases NOT FOUND"
+fi
