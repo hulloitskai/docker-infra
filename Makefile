@@ -6,7 +6,7 @@ SSHKEY = "./auth/id_ed25519.terraform"
 ## Terraform commands:
 .PHONY: init apply plan plan-destroy exec destroy fmt
 
-TF = "TF_VAR_name=$(NAME) terraform"
+TF = terraform
 plan_out = terraform.tfplan
 
 apply:

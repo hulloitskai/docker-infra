@@ -26,8 +26,9 @@ resource "digitalocean_droplet" "primary" {
   region = "nyc1"
 
   // Optional configuration settings:
-  user_data          = "${data.ignition_config.primary.rendered}"
-  ssh_keys           = ["${digitalocean_ssh_key.tf.fingerprint}"]
+  user_data = "${data.ignition_config.primary.rendered}"
+  ssh_keys  = ["${digitalocean_ssh_key.tf.fingerprint}"]
+
   // tags               = ["${digitalocean_tag.main.id}"]
   private_networking = true
 

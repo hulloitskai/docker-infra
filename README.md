@@ -9,11 +9,11 @@ for remotely deploying and managing Docker containers on DigitalOcean.
 
 ## Effects
 
-Given a platform named "plat" and a domain named "example.com",
+Given a platform named **plat** and a domain named **example.com**,
 `docker-platform` is preconfigured to perform the following when `make apply` is
 run:
 
-- Create a CoreOS DigitalOcean Droplet named "plat", which accepts connections
+- Create a CoreOS DigitalOcean Droplet named **plat**, which accepts connections
   on ports for SSH, HTTP, HTTPS, Docker Machine networking, and Docker Swarm
   networking; all other connections are rejected.
 
@@ -25,10 +25,10 @@ run:
   can be modified to your liking.
 
 - Create a DigitalOcean Floating IP for above instance.
-- Point "example.com" to proxy the above Floating IP (as a "proxied" name, this
-  will mask the true origin (i.e. the Floating IP), which will not be visible to
-  clients).
-- Point "plat.example.com" directly at the above Floating IP (as an "exposed"
+- Point **example.com** to proxy the above Floating IP (as a "proxied" name,
+  this will mask the true origin (i.e. the Floating IP), which will not be
+  visible to clients).
+- Point **plat.example.com** directly at the above Floating IP (as an "exposed"
   name, this will expose the true origin, and so is a suitable address to use
   with SSH and Docker Machine).
 
@@ -36,8 +36,8 @@ run:
 
 1. Create an `auth/`directory with the following pieces of data:
    - `admin.passhash`: a password hash generated using
-     `mkpasswd --method=SHA-512 --rounds=8192`. This password used to generate
-     the has will be the password for the primary user, `admin`.
+     [`hash512`](https://github.com/steven-xie/hash512). The corresponding
+     password will be the password for the primary user, `admin`.
    - `id_ed25519.pub`: a public key for personal access to the server. Should
      be generated along with a corresponding private key using:
      `ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/id_ed25519 -C "comment"`.
@@ -113,5 +113,8 @@ Visit your Droplet's domain or floating IP to see the results.
 
 - Given that your domain is _example.com_, consider manually pointing
   _www.example.com_ at _example.com_ using a CNAME record.
-- Consider using this platform as a Docker Swarm manager, using `docker swarm init`. Once this is configured, you can bundle Docker containers into a stack
-  using a `docker-compose.yml`, and deploy them together using `docker stack deploy`.
+
+- Consider using this platform as a Docker Swarm manager, using
+  `docker swarm init` (while connected to the remote Docker daemon). Once this
+  is configured, you can bundle Docker containers into a stack using a
+  `docker-compose.yml`, and deploy them together using `docker stack deploy`.
