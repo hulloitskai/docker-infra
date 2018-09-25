@@ -1,7 +1,6 @@
 # docker-platform
 
-_A platform configuration that provides automated infrastructure for securely
-hosting Docker containers._
+_Automated infrastructure for a secure Docker host platform._
 
 `docker-platform` uses [Terraform](https://www.terraform.io), and
 [CoreOS](https://coreos.com) to provide a lightweight, easy-to-use platform
@@ -31,6 +30,18 @@ run:
 - Point **plat.example.com** directly at the above Floating IP (as an "exposed"
   name, this will expose the true origin, and so is a suitable address to use
   with SSH and Docker Machine).
+
+## Prerequisites
+
+The local development machine should have the following tools.
+
+- [Docker](https://www.docker.com) and
+  [Docker Machine](https://docs.docker.com/machine/install-machine/) (Docker
+  Machine comes preinstalled with _Docker for Mac_ and _Docker for Windows_)
+- [Terraform](https://www.terraform.io)
+- [`hash512`](https://github.com/steven-xie/hash512) (or some other SHA-512
+  password-hashing utility like `mkpasswd`)
+- `ssh-keygen` (for making SSH keys; alternatively you can use existing keys)
 
 ## Platform Configuration
 
