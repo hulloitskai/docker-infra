@@ -1,7 +1,5 @@
 ## Configurable variables:
-NAME   = "$(shell basename $$(pwd))"
-DOMAIN = "stevenxie.me"
-SSHKEY = "./auth/id_ed25519.terraform"
+SSHKEY = ./auth/id_ed25519.terraform
 
 ## Terraform commands:
 .PHONY: init apply plan plan-destroy exec destroy fmt
@@ -9,6 +7,8 @@ SSHKEY = "./auth/id_ed25519.terraform"
 TF = terraform
 plan_out = terraform.tfplan
 
+init:
+	@$(TF) init
 apply:
 	@$(TF) apply
 plan:
@@ -25,18 +25,19 @@ fmt:
 
 ## Docker Machine commands:
 .PHONY: mch-create
-
 DKMCH = docker-machine
 
 ## mch-create creates a generic docker machine on the remote host.
 ## Variables: ADDR, SSHKEY
-ADDR = "$(NAME).$(DOMAIN)"
+NAME   = $(shell ./scripts/tfparse.sh name)
+DOMAIN = $(shell ./scripts/tfparse.sh domain)
+ADDR = $(NAME).$(DOMAIN)
 mch-create:
 	@$(DKMCH) create --driver generic \
 					 --generic-ip-address="$(ADDR)" \
 					 --generic-ssh-key="$(SSHKEY)" \
 					 --generic-ssh-user=admin \
-					 $(NAME)
+					 "$(NAME)"
 
 mch-rm:
 	@$(DKMCH) rm $(NAME)

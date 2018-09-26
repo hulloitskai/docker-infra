@@ -63,10 +63,6 @@ The local development machine should have the following tools.
    // name is the name of your platform, which will be associated with
    // infrastructure names on Cloudflare and DigitalOcean, as well as the
    // name of the resulting Docker Machine. Keep it simple and whitespace-free.
-   //
-   // This should be the same name as the root folder of this repository (the
-   // Makefile and some external scripts will attempt to derive this name
-   // from the root folder).
    name = "..."
 
    // cf_domain is the Cloudflare domain you'd like to attach your platform to,

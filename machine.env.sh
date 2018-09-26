@@ -3,6 +3,5 @@
 ## Source this script (. ./machine.env.sh) to configure Docker for access to
 ## this machine.
 
-NAME="$(basename $(pwd))"
-
+NAME="$(./scripts/tfparse.sh name)"
 eval $(docker-machine env $NAME)
