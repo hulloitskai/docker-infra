@@ -120,8 +120,9 @@ Visit your Droplet's domain or floating IP to see the results.
 
 - Given that your domain is _example.com_, consider manually pointing
   _www.example.com_ at _example.com_ using a CNAME record.
-
 - Consider using this platform as a Docker Swarm manager, using
   `docker swarm init` (while connected to the remote Docker daemon). Once this
   is configured, you can bundle Docker containers into a stack using a
   `docker-compose.yml`, and deploy them together using `docker stack deploy`.
+- Consider encrypting `auth/*` and `terraform.tfvars` with
+  [`git-secret`](http://git-secret.io).

@@ -17,7 +17,8 @@ override.tf.json
 *_override.tf.json
 
 ## Secrets and authentication files
-/auth/
+/auth/*
+!/auth/*.secret
 terraform.tfvars
 
 ## Terraform plans
