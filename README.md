@@ -6,6 +6,9 @@ _Automated infrastructure for secure Docker hosting infrastructure._
 [CoreOS](https://coreos.com) to generate a lightweight, easy-to-use infra
 for remotely deploying and managing Docker containers on DigitalOcean.
 
+**Branch `swarm` additional initializes a Docker Swarm manager on the
+generated CoreOS instance.**
+
 ## Effects
 
 Given a infra named **plat** and a domain named **example.com**,

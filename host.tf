@@ -39,6 +39,13 @@ resource "digitalocean_droplet" "primary" {
     private_key = "${data.local_file.tf_pvtkey.content}"
     timeout     = "2m"
   }
+
+  // Automatically provision Docker Swarm:
+  provisioner "remote-exec" {
+    inline = [
+      "docker swarm init --advertise-addr $(curl ifconfig.co)"
+    ]
+  }
 }
 
 // Configure floating IP for DigitalOcean.
