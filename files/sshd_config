@@ -1,10 +1,23 @@
 UsePrivilegeSeparation sandbox
 Subsystem              sftp internal-sftp
 ClientAliveInterval    180
+LoginGraceTime         1m
 UseDNS                 no
 UsePAM                 no
 
 PermitRootLogin       no
 AllowUsers            core admin
 AuthenticationMethods publickey
-PrintMotd             no
+
+## Private host key configuration:
+ServerKeyBits           4096
+KeyRegenerationInterval 3600
+
+## Additional security configs:
+IgnoreRHosts            yes
+StrictModes             yes
+PasswordAuthentication  no
+RhostsRSAAuthentication no
+
+PrintMotd     no
+X11Forwarding no
