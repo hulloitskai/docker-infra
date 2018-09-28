@@ -100,10 +100,10 @@ as possible.
 1. Run `make mch-create` to create a Docker Machine corresponding to
    `grapevine`. You only have to do this step once.
 2. Run `. machine.env.sh` to load the environment variables corresponding
-   to this Docker Machine into the current shell. _This step has to be run
-   every time you want to access the remote Docker daemon._
+   to this Docker Machine into the current shell. _This will persist for the
+   lifetime of the shell, and has to be re-done when starting a new shell._
 3. When you are done with deploying to the remote Docker daemon, switch back
-   to the local daemon by running `. unmachine.env.sh`.
+   to the local daemon on the current shell by running `. unmachine.env.sh`.
 
 ### Deploying
 
