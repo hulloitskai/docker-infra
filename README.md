@@ -87,7 +87,10 @@ The local development machine should have the following tools.
    These are secrets that should not be included in your version control system.
    This repository automatically ignores `terraform.tfvars` in the `.gitconfig`.
 
-4. Run `make apply` to automatically generate the infrastructure on DigitalOcean
+4. Run `make init` to install the necessary plugins for Terraform to work with
+   DigitalOcean and Cloudflare.
+
+5. Run `make apply` to automatically generate the infrastructure on DigitalOcean
    and Cloudflare.
 
 ## Deploying Docker Containers
