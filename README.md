@@ -1,15 +1,15 @@
-# docker-platform
+# docker-infra
 
-_Automated infrastructure for a secure Docker host platform._
+_Automated infrastructure for secure Docker hosting infrastructure._
 
-`docker-platform` uses [Terraform](https://www.terraform.io), and
-[CoreOS](https://coreos.com) to generate a lightweight, easy-to-use platform
+`docker-infra` uses [Terraform](https://www.terraform.io), and
+[CoreOS](https://coreos.com) to generate a lightweight, easy-to-use infra
 for remotely deploying and managing Docker containers on DigitalOcean.
 
 ## Effects
 
-Given a platform named **plat** and a domain named **example.com**,
-`docker-platform` is preconfigured to perform the following when `make apply` is
+Given a infra named **plat** and a domain named **example.com**,
+`docker-infra` is preconfigured to perform the following when `make apply` is
 run:
 
 - Create a CoreOS DigitalOcean Droplet named **plat**, which accepts connections
@@ -17,7 +17,7 @@ run:
   networking; all other connections are rejected.
 
   It only accepts key-based authentication (no password auth)
-  based on the provided SSH keys (more details on this in the _Platform
+  based on the provided SSH keys (more details on this in the _Infrastructure
   Configuration_ section below).
 
   It also has some shell customizations that can be found in `files/`, which
@@ -43,7 +43,7 @@ The local development machine should have the following tools.
   password-hashing utility like `mkpasswd`)
 - `ssh-keygen` (for making SSH keys; alternatively you can use existing keys)
 
-## Platform Configuration
+## Infrastructure Configuration
 
 1. Create an `auth/`directory with the following pieces of data:
    - `admin.passhash`: a password hash generated using
@@ -57,15 +57,15 @@ The local development machine should have the following tools.
    - `id_ed25519.terraform`, `id_ed25519.terraform.pub`: the public-private
      key pair that Terraform will use to access the server to perform remote
      provisioning. Generated the same way as `id_ed25519.pub`.
-2. Modify `platform.auto.tfvars` to have following shape:
+2. Modify `infra.auto.tfvars` to have following shape:
 
    ```hcl
-   // name is the name of your platform, which will be associated with
+   // name is the name of your infra, which will be associated with
    // infrastructure names on Cloudflare and DigitalOcean, as well as the
    // name of the resulting Docker Machine. Keep it simple and whitespace-free.
    name = "..."
 
-   // cf_domain is the Cloudflare domain you'd like to attach your platform to,
+   // cf_domain is the Cloudflare domain you'd like to attach your infra to,
    // i.e. "stevenxie.me"
    cf_domain = "..."
    ```
@@ -89,7 +89,7 @@ The local development machine should have the following tools.
 
 ## Deploying Docker Containers
 
-`docker-platform` is configured to make container deployment as seamless
+`docker-infra` is configured to make container deployment as seamless
 as possible.
 
 ### Configuration
@@ -120,7 +120,7 @@ Visit your Droplet's domain or floating IP to see the results.
 
 - Given that your domain is _example.com_, consider manually pointing
   _www.example.com_ at _example.com_ using a CNAME record.
-- Consider using this platform as a Docker Swarm manager, using
+- Consider using this infra as a Docker Swarm manager, using
   `docker swarm init` (while connected to the remote Docker daemon). Once this
   is configured, you can bundle Docker containers into a stack using a
   `docker-compose.yml`, and deploy them together using `docker stack deploy`.

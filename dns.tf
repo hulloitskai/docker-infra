@@ -28,7 +28,7 @@ provider "cloudflare" {
   token = "${var.cf_token}"
 }
 
-// Create primary proxied record for this platform.
+// Create primary proxied record.
 resource "cloudflare_record" "proxied_primary" {
   domain  = "${var.cf_domain}"
   name    = "${var.cf_domain}"
@@ -47,7 +47,7 @@ resource "cloudflare_record" "proxied" {
   proxied = true
 }
 
-// Create primary exposed record for this platform.
+// Create primary exposed record.
 resource "cloudflare_record" "exposed_primary" {
   domain = "${var.cf_domain}"
   name   = "${var.name}"
