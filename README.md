@@ -1,6 +1,6 @@
 # docker-infra
 
-_Automated infrastructure for secure Docker hosting infrastructure._
+_Automated, secure Docker hosting infrastructure._
 
 `docker-infra` uses [Terraform](https://www.terraform.io), and
 [CoreOS](https://coreos.com) to generate a lightweight, easy-to-use infra
