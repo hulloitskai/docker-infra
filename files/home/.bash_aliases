@@ -6,8 +6,10 @@ then alias chstat="stat -f '%A'"
 else alias chstat="stat --format '%a'"
 fi
 
-## c clears the screen
+## Tiny shortcuts:
 alias c="clear"
+alias l="ls"
+alias e="exit"
 
 ## wkb changes the working directory to $WORKBENCH.
 alias wkb="cd $WORKBENCH"

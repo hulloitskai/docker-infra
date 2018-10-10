@@ -1,10 +1,5 @@
 #!/bin/bash
 
-## warn prints out $* in red.
-warn() {
-  printf "\e[0;31m$*\e[0m\n"
-}
-
 ## transfer uploads file $1 using transfer.sh.
 transfer() {
   cmd="curl --upload-file $1 https://transfer.sh/${1##*/}"

@@ -1,12 +1,17 @@
 ## Configurable variables:
 SSHKEY = ./auth/id_ed25519.terraform
 
-## Setup commands:
+
+## Setup / git-secret commands:
 .PHONY: setup
 
 ## setup will configure Git to use the hooks in .githooks/.
 setup:
-	@git config core.hooksPath .githooks
+	@echo "Setting up pre-commit hook..." && \
+	 git config core.hooksPath .githooks
+hide:
+	@echo "Hiding modified secret files..." && \
+	 git secret hide -m
 
 
 ## Terraform commands:
